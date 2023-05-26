@@ -7,6 +7,9 @@
 <body>
     <h1>Automata Final Project</h1>
 
+    <canvas id="bodycanvas"></canvas>
+    <p class="output">OUTPUT</p>
+
     <!--Expression Selection-->
 <center>
  <div class="box">  
@@ -14,7 +17,7 @@
         <button onclick="selectExpression()" class="btn" id="firstrw">Select Expression</button>
         <div id="expressions" class="expressions">
             <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb (a + b)* (bab + aba) (a + b)*</a>
-            <a onclick="expression2()"><b>Expression 2:</b>(1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
+            <a onclick="expression2()"><b>Expression 2:</b> (1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
         </div>
     </div>
 
@@ -57,11 +60,11 @@
     </div>
     
     <!--Expression Canvas-->
-    <p></p>
-    <canvas id="expressionCanvas" width="700" height="350"></canvas>
+    <p class="selectE">Select Expression</p>
+    <canvas id="expressionCanvas" width="765" height="330"></canvas>
 
     <!--Input Box-->
-    <p>Enter String(s) to be Evaluated:</p>
+    <p class="string">Enter String(s) to be Evaluated:</p>
     <textarea id="input" cols="99" wrap="hard"></textarea>
     <button class="btn" id="eval" onclick="eval()">Evaluate</button>
 
@@ -71,8 +74,5 @@
 </center>
     <!--JS script-->
     <script src="script.js"></script>
-</body>
-</html>
-   <script src="script.js"></script>
 </body>
 </html>
