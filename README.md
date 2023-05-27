@@ -1,10 +1,11 @@
 # FinalsProject
 
 To Do List:
-- [x] New GUI - Kirk
+- [x] New GUI - Kirk/Jonathan
 - [x] Expressions FA - bert
 - [x] CFG - Vea
 - [x] PDA - Em
+- [ ] New color palette - Vea
 - [ ] Input logic code
 - [ ] Simulation animations
 

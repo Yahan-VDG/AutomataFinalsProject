@@ -3,18 +3,17 @@ h1 {
   font-family: Helvetica;
   font-size: 50px;
   text-align: center;
-  text-transform: uppercase;
   padding-top: 30px;
   padding-bottom: 30px;
   border: 0px;
   margin-top: 0px;
-  background: #834739;
-  color: #f4f2b1;
-  box-shadow: 0px 10px 10px #723b2e;
+  background: #442807;
+  color: #ffd699;
+  box-shadow: 0px 10px 10px rgb(42, 42, 42);
 }
 
 body {
-  background-color: #f4f2b1;
+  background-color: #ffd699;
   padding: 0px;
   border: 0px;
   margin: 0px;
@@ -23,68 +22,72 @@ body {
 p {
   margin-top: 20px;
   text-align: center;
-  font-family: 'Khula';
-  font-style: normal;
+  font-family: Helvetica;
   font-weight: 600;
-  font-size: 16.5px;
-  line-height: 26px;
-  color: #F9F7C3;
+  font-size: 18px;
+  color: #ffd699;
 }
 
-/* string  text */
-p.string {
-  position: absolute;
-  width: 266px;
-  height: 26px;
-  left: 550px;
-  top: 760px;
+.bodytxt {
+  text-align: left;
+  color: #ffd699;
+  margin-left: 50%;
+  transform: translate(-90%);
 }
 
-/* output  text */
-p.output {
-  position: absolute;
-  width: 68px;
-  height: 26px;
-  left: 570px;
-  top: 312px;
+
+/* Background Box */
+.box {
+  background: #4b392f;
+  width: 800px;
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  box-shadow: 0px 10px 10px rgb(42, 42, 42);
+  border-radius: 20px;
 }
 
-/* Select expression  text */
-p.selectE {
-  position: absolute;
-  width: 140px;
-  height: 26px;
-  left: 562px;
-  top: 238px;
-  }
-
-/* Dropdown Button */
-
+/* Buttons */
 .btn {
-  background-color: #b1f4f2;
-  color: #834739;
-  font-size: 16px;
-  font-weight: bold;
-  font-family: 'Khula';
-  width: 763px;
-  height: 32px;
-  border: none;
+  background-color: #c06464;
+  border: 2px solid #422800;
+  box-shadow: rgb(66, 40, 0)x 0 0;
+  color: #422800;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 2px;
 }
 
+/* First Row of Buttons */
 #firstrw {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 90%;
 }
 
+/* First Row of Buttons */
 #secondrw {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
-.btn:hover, .btn:focus {
-  background-color: #b1f4f2;
+/* Button Effects */
+.btn:hover {
+  background-color: #fff;
 }
 
 .btn:active {
@@ -92,19 +95,17 @@ p.selectE {
   transform: translate(2px, 2px);
 }
 
+@media (min-width: 768px) {
+  .btn{
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  box-sizing: border-box;
-
-  position: absolute;
-  width: 765px;
-  height: 34px;
-  left: 570px;
-  top: 284px;
-
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 5px;
+  position: relative;
+  text-align: center;
 }
 
 .dropdown > * {
@@ -115,18 +116,19 @@ p.selectE {
 .expressions {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width: 763px;
+  background-color: #ffffff;
+  width: 715px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  margin-left: 50%;
+  transform: translate(-50%);
 }
   
-  /* Links inside the dropdown */
+/* Links inside the dropdown */
 .expressions a {
   color: black;
   padding: 12px 16px;
-  text-decoration: none;
   display: block;
   text-align: left;
 }
@@ -137,44 +139,16 @@ p.selectE {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-/* Evaluate */
-#eval {
-  position: absolute;
-  width: 113px;
-  height: 41px;
-  left: 891px;
-  top: 910px;
-  border-radius: 2px;
-  font-style: normal;
-  font-size: 16.5px;
-  line-height: 6px;
-  text-align: center;
-}
-
 /* CFG popups */
-#cfgbutton {
-  position: absolute;
-  width: 113px;
-  height: 41px;
-  left: 570px;
-  top: 714px;
-
-  background: #b1f4f2;
-  border-radius: 2px;
-}
-
-
 #cfgoverlay {
   display: none;
   position: absolute;
-  bottom: 260px;
-  margin-left: -464px;
   width: 300px;
   min-width: 150px;
   overflow: hidden;
-  background-color: #251d17;
+  background-color: #422800;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 2;
 }
 
 #cfg1, #cfg2, #noexpCFG {
@@ -184,29 +158,15 @@ p.selectE {
   margin-left: 10px;
   margin-top: 10px;
   color: white;
-  z-index: 1;
 }
 
-/* PDA popups*/
-#pdabutton {
-  position: absolute;
-  width: 113px;
-  height: 41px;
-  left: 690px;
-  top: 714px;
-
-  background: #b1f4f2;
-  border-radius: 2px;
-}
-
+/* PDA Pop Up */
 #pdaoverlay {
   display: none;
   position: absolute;
-  margin-top: 90px;
   overflow: hidden;
-  background-color: #251d17;
+  background-color: #422800;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
 }
 
 #pda1, #pda2, #noexpPDA {
@@ -216,7 +176,6 @@ p.selectE {
   margin-left: 10px;
   margin-top: 10px;
   color: white;
-  z-index: 1;
 }
 
 #noexpPDA {
@@ -226,41 +185,89 @@ p.selectE {
 
 /* Canvas */
 #expressionCanvas {
-  box-sizing: border-box;
-
-  position: absolute;
-
-  left: 570px;
-  top: 363px;
-
-  background: #FFFFFF;
+  background:  rgb(243, 243, 243);
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 5px;
 }
 
 /* Input */
+.inputlines {
+  display: flex;
+  margin: 0 auto;
+  max-width: 730px;
+}
+
+/* Line Numbers */
+.linenum {
+  width: 10px;
+  height: 100%;
+  border: 1px solid #422800;
+  padding: 5px 8px 5px 3px;
+  background-color: #c06464;
+  font-family: Helvetica;
+  font-weight: 600;
+  font-size: 14px;
+  color: #422800;
+  pointer-events: none;
+  user-select: none;
+  white-space: pre;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+/* Input Textarea */
 #input {
-  box-sizing: border-box;
+  width: 560px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Helvetica;
+  font-size: 14px;
+  line-height: 1.5;
+}
 
-  position: absolute;
-  width: 765px;
-  height: 79px;
-  left: 570PX;
-  top: 806px;
-  
-  background: #FFFFFF;
-  border-radius: 5px;
-  }
+/* Simulate Buttons*/
+.simbtn {
+  white-space: nowrap;
+  width: 150px;
+  display: block;
+  background-color: #c06464;
+  border: 1px solid #422800;
+  box-shadow: rgb(66, 40, 0)x 0 0;
+  font-family: Helvetica;
+  color: #422800;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-bottom: 1.75px;
+}
 
-/* Inner body canvas */
-#bodycanvas {
-  box-sizing: border-box;
-  position: absolute;
+/* Evaluate */
+#eval {
+  display: block;
   margin-right: auto;
   margin-left: auto;
-  width: 860px;
-  height: 780px;
-  left: 520px;
-  top: 220px;
-  background: #a97e71;
-  border-radius: 16px;
+  margin-top: 10px;
+}
+
+/* Credits */
+#credits {
+  width: 100%;
+  background: #281801;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+}
+
+#credits p {
+  color: white;
+  font-size: 18px;
+  text-align: center;
 }

@@ -5,21 +5,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Automata Final Project</h1>
-
-    <canvas id="bodycanvas"></canvas>
-    <p class="output">OUTPUT</p>
+    <h1>Automata Finals Project</h1>
 
     <!--Expression Selection-->
-<center>
- <div class="box">  
+    <div class="box">  
+    <p class="bodytxt">Select Expression</p>
     <div class="dropdown">
         <button onclick="selectExpression()" class="btn" id="firstrw">Select Expression</button>
         <div id="expressions" class="expressions">
             <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb (a + b)* (bab + aba) (a + b)*</a>
-            <a onclick="expression2()"><b>Expression 2:</b> (1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
+            <a onclick="expression2()"><b>Expression 2:</b>(1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
         </div>
     </div>
+
+    <!--Expression Canvas-->
+    <p class="bodytxt">Output</p>
+    <canvas id="expressionCanvas" width="710" height="325"></canvas>
 
     <!--CFG and PDA-->
     <div id="secondrw">
@@ -59,20 +60,21 @@
     </div>
     </div>
     
-    <!--Expression Canvas-->
-    <p class="selectE">Select Expression</p>
-    <canvas id="expressionCanvas" width="765" height="330"></canvas>
-
     <!--Input Box-->
-    <p class="string">Enter String(s) to be Evaluated:</p>
-    <textarea id="input" cols="99" wrap="hard"></textarea>
+    <p class="bodytxt">Enter String(s) to be Evaluated:</p>
+    <div class="inputlines">
+        <div class="linenum"></div>
+        <div class="textarea-container">
+            <textarea id="input" cols="99" wrap="hard" oninput="adjust()"></textarea>
+        </div>
+        <div id="simbtn"></div>
+    </div>
     <button class="btn" id="eval" onclick="eval()">Evaluate</button>
+    </div>
 
-    <!--Valid Expressions-->
-    <div id="valid"></div>
- </div>
-</center>
-    <!--JS script-->
+    <div id="credits">
+        <p>Made by BCS31 Group 4 <br><br>Estelle Marie Dasal<br>Vea Annamika De Guzman<br>Eisley Kirk Maglabe<br>Renbert Rosas<br>Jonathan Verder</p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
