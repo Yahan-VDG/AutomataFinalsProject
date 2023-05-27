@@ -7,13 +7,13 @@ h1 {
   padding-bottom: 30px;
   border: 0px;
   margin-top: 0px;
-  background: #442807;
-  color: #ffd699;
-  box-shadow: 0px 10px 10px rgb(42, 42, 42);
+  background: #552b22;
+  color: #f7f4a0;
+  box-shadow: 0px 10px 10px #552b22;
 }
 
 body {
-  background-color: #ffd699;
+  background-color: #f7f4a0;
   padding: 0px;
   border: 0px;
   margin: 0px;
@@ -25,12 +25,12 @@ p {
   font-family: Helvetica;
   font-weight: 600;
   font-size: 18px;
-  color: #ffd699;
+  color: #f7f4a0;
 }
 
 .bodytxt {
   text-align: left;
-  color: #ffd699;
+  color: #f7f4a0;
   margin-left: 50%;
   transform: translate(-90%);
 }
@@ -38,7 +38,7 @@ p {
 
 /* Background Box */
 .box {
-  background: #4b392f;
+  background: #79483e;
   width: 800px;
   height: 100%;
   padding-top: 20px;
@@ -46,16 +46,16 @@ p {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-  box-shadow: 0px 10px 10px rgb(42, 42, 42);
+  box-shadow: 0px 10px 10px #57332c;
   border-radius: 20px;
 }
 
 /* Buttons */
 .btn {
-  background-color: #c06464;
-  border: 2px solid #422800;
+  background-color: #ee6868;
+  border: 2px solid #552b22;
   box-shadow: rgb(66, 40, 0)x 0 0;
-  color: #422800;
+  color: #552b22;
   cursor: pointer;
   font-weight: 600;
   font-size: 18px;
@@ -87,7 +87,7 @@ p {
 
 /* Button Effects */
 .btn:hover {
-  background-color: #fff;
+  background-color: #daadad;
 }
 
 .btn:active {
@@ -146,7 +146,7 @@ p {
   width: 300px;
   min-width: 150px;
   overflow: hidden;
-  background-color: #422800;
+  background-color: #552b22;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 2;
 }
@@ -157,7 +157,7 @@ p {
   text-align: left;
   margin-left: 10px;
   margin-top: 10px;
-  color: white;
+  color: #f7f4a0;
 }
 
 /* PDA Pop Up */
@@ -165,7 +165,7 @@ p {
   display: none;
   position: absolute;
   overflow: hidden;
-  background-color: #422800;
+  background-color: #552b22;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -175,7 +175,7 @@ p {
   text-align: left;
   margin-left: 10px;
   margin-top: 10px;
-  color: white;
+  color: #f7f4a0;
 }
 
 #noexpPDA {
@@ -203,13 +203,13 @@ p {
 .linenum {
   width: 10px;
   height: 100%;
-  border: 1px solid #422800;
+  border: 1px solid #552b22;
   padding: 5px 8px 5px 3px;
-  background-color: #c06464;
+  background-color: #ee6868;
   font-family: Helvetica;
   font-weight: 600;
   font-size: 14px;
-  color: #422800;
+  color: #552b22;
   pointer-events: none;
   user-select: none;
   white-space: pre;
@@ -258,7 +258,7 @@ p {
 /* Credits */
 #credits {
   width: 100%;
-  background: #281801;
+  background: #552b22;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -267,7 +267,7 @@ p {
 }
 
 #credits p {
-  color: white;
+  color: #f7f4a0;
   font-size: 18px;
   text-align: center;
 }
