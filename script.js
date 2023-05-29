@@ -37,8 +37,8 @@ window.onclick = function (event) {
 };
 
 // CFG
-cfgbutton.addEventListener('click', function() {
-    cfgoverlay.style.display = 'block'; 
+cfgbutton.addEventListener('click', function () {
+    cfgoverlay.style.display = 'block';
     if (expression == "expression1") {
         cfg1.style.display = 'block';
     } else if (expression == "expression2") {
@@ -49,10 +49,10 @@ cfgbutton.addEventListener('click', function() {
 
     // Calculate and set the height of cfgoverlay
     const visiblePopup = cfg1.style.display === "block"
-    ? cfg1
-    : cfg2.style.display === "block"
-    ? cfg2
-    : noexpCFG;
+        ? cfg1
+        : cfg2.style.display === "block"
+            ? cfg2
+            : noexpCFG;
     const popupHeight = visiblePopup.offsetHeight;
     cfgoverlay.style.height = `${popupHeight + 20}px`;
 
@@ -60,7 +60,7 @@ cfgbutton.addEventListener('click', function() {
     cfgoverlay.style.marginTop = `${popupMarginTop}px`;
 });
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     if (!cfgoverlay.contains(event.target) && event.target !== cfgbutton) {
         cfgoverlay.style.display = 'none';
         cfg1.style.display = 'none';
@@ -70,8 +70,8 @@ document.addEventListener('click', function(event) {
 });
 
 // PDA
-pdabutton.addEventListener('click', function() {
-    pdaoverlay.style.display = 'block'; 
+pdabutton.addEventListener('click', function () {
+    pdaoverlay.style.display = 'block';
     if (expression == "expression1") {
         pda1.style.display = 'block';
     } else if (expression == "expression2") {
@@ -81,10 +81,10 @@ pdabutton.addEventListener('click', function() {
     }
 
     const visiblePopup = pda1.style.display === "block"
-    ? pda1
-    : pda2.style.display === "block"
-    ? pda2
-    : noexpPDA;
+        ? pda1
+        : pda2.style.display === "block"
+            ? pda2
+            : noexpPDA;
     const popupHeight = visiblePopup.offsetHeight;
     pdaoverlay.style.height = `${popupHeight + 20}px`;
     const popupWidth = visiblePopup.offsetWidth;
@@ -94,7 +94,7 @@ pdabutton.addEventListener('click', function() {
     pdaoverlay.style.marginTop = `${popupMarginTop}px`;
 });
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     if (!pdaoverlay.contains(event.target) && event.target !== pdabutton) {
         pdaoverlay.style.display = 'none';
         pda1.style.display = 'none';
@@ -111,24 +111,24 @@ function expression1() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Define the states of the FA
-    const q0 = { x: 30, y: 100, starting: true };
-    const q1 = { x: 100, y: 100 };
-    const q2 = { x: 170, y: 100 };
-    const q3 = { x: 240, y: 100 };
-    const q4 = { x: 310, y: 100 };
-    const q5 = { x: 310, y: 160 };
-    const q6 = { x: 380, y: 100 };
-    const q7 = { x: 450, y: 100 };
-    const q8 = { x: 520, y: 100 };
-    const q9 = { x: 450, y: 160 };
-    const q10 = { x: 520, y: 160 };
-    const q11 = { x: 520, y: 40 };
-    const q12 = { x: 590, y: 100 };
-    const q13 = { x: 590, y: 40 };
-    const q14 = { x: 660, y: 40 };
-    const q15 = { x: 590, y: 160 };
-    const q16 = { x: 660, y: 160 };
-    const q17 = { x: 660, y: 100, accepting: true };
+    const q0 = { x: 30, y: 163, starting: true };
+    const q1 = { x: 100, y: 163 };
+    const q2 = { x: 170, y: 163 };
+    const q3 = { x: 240, y: 163 };
+    const q4 = { x: 310, y: 163 };
+    const q5 = { x: 310, y: 243 };
+    const q6 = { x: 380, y: 163 };
+    const q7 = { x: 450, y: 163 };
+    const q8 = { x: 520, y: 163 };
+    const q9 = { x: 450, y: 243 };
+    const q10 = { x: 520, y: 243 };
+    const q11 = { x: 520, y: 83 };
+    const q12 = { x: 590, y: 163 };
+    const q13 = { x: 590, y: 83 };
+    const q14 = { x: 660, y: 83 };
+    const q15 = { x: 590, y: 243 };
+    const q16 = { x: 660, y: 243 };
+    const q17 = { x: 660, y: 163, accepting: true };
 
     // Define the transitions of the FA
     const transitions = [
@@ -157,7 +157,8 @@ function expression1() {
         { from: q13, to: q14, symbol: 'b' },
         { from: q17, to: q17, symbol: 'a,b' },
         { from: q14, to: q17, symbol: 'a' }
-    ]
+    ];
+    //eval(transitions, q0, q17);
 
     // Draw the transitions on the canvas
     for (let i = 0; i < transitions.length; i++) {
@@ -177,15 +178,15 @@ function expression1() {
         ctx.beginPath();
         ctx.moveTo(from.x + radius * cos, from.y + radius * sin);
 
-        ctx.font = "bold 16px Arial";
+        ctx.font = "bold 16px Helvetica";
         if (from === to) {
-            // draw a loop arrow
+            // draw a loop
             const loopRadius = 11;
             const labelHeight = 2;
             const labelWidth = ctx.measureText(symbol).width;
             let loopX, loopY, labelX, labelY, loopEndAngle, loopStartAngle;
             let counterAngle = false;
-            if (from.y == 100) { //if the state is above
+            if (from.y == 163) { //if the state is above
                 if (from.accepting) {
                     loopX = from.x - (loopRadius - 37);
                     loopY = from.y;
@@ -197,11 +198,6 @@ function expression1() {
                     // label the transition
                     ctx.save();
                     ctx.translate(midX, midY);
-                    // Text shadow
-                    ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-                    ctx.shadowBlur = 4;
-                    ctx.shadowOffsetX = 2;
-                    ctx.shadowOffsetY = 2;
                     // Text color
                     ctx.fillStyle = "#c06464";
                     ctx.fillText(symbol, labelX, labelY);
@@ -210,38 +206,28 @@ function expression1() {
                     loopY = from.y - (loopRadius + 10);
                     loopX = from.x;
                     labelX = -labelWidth / 2;
-                    labelY = labelHeight - 45;
+                    labelY = labelHeight - 40;
                     loopEndAngle = 0.75 * Math.PI;
                     loopStartAngle = 2 * Math.PI;
                     counterAngle = true;
                     // label the transition
                     ctx.save();
                     ctx.translate(midX, midY);
-                    // Text shadow
-                    ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-                    ctx.shadowBlur = 4;
-                    ctx.shadowOffsetX = 2;
-                    ctx.shadowOffsetY = 2;
                     // Text color
                     ctx.fillStyle = "#c06464";
                     ctx.fillText(symbol, labelX, labelY);
                     ctx.restore();
                 }
-            } else if (from.y == 160) { //if the state is below
+            } else if (from.y == 243) { //if the state is below
                 loopY = from.y + (loopRadius + 10);
                 loopX = from.x;
                 labelX = -labelWidth / 2;
-                labelY = labelHeight + 50;
+                labelY = labelHeight + 45;
                 loopEndAngle = 4;
                 loopStartAngle = 0;
                 // label the transition
                 ctx.save();
                 ctx.translate(midX, midY);
-                // Text shadow
-                ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-                ctx.shadowBlur = 4;
-                ctx.shadowOffsetX = 2;
-                ctx.shadowOffsetY = 2;
                 // Text color
                 ctx.fillStyle = "#c06464";
                 ctx.fillText(symbol, labelX, labelY);
@@ -296,13 +282,30 @@ function expression1() {
             ctx.translate(midX, midY);
             const labelWidth = ctx.measureText(symbol).width;
             const labelHeight = 2;
-            const labelX = -labelWidth / 2;
-            const labelY = labelHeight / 2;
-            // Text shadow
-            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-            ctx.shadowBlur = 4;
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 2;
+            let labelX = -labelWidth / 2;
+            let labelY = labelHeight / 2;
+
+            const labelOffset = 10; //label offset
+            const labelOffsetY = 5;
+            if ((from === q3 && to === q5) ||
+                (from === q12 && to === q15) ||
+                (from === q12 && to === q13) ||
+                (from === q8 && to === q11) ||
+                (from === q10 && to === q7)) {
+                labelX += labelOffset; // Move the label to the right
+            }
+
+            else if ((from === q6 && to === q5) ||
+                (from === q5 && to === q7) ||
+                (from === q16 && to === q17) ||
+                (from === q14 && to === q17) ||
+                (from === q11 && to === q7) ||
+                (from === q7 && to === q9)) {
+                labelX -= labelOffset; // Move the label to the left
+            }
+            else {
+                labelY -= labelOffsetY;
+            }
             // Text color
             ctx.fillStyle = "#c06464";
             ctx.fillText(symbol, labelX, labelY);
@@ -333,7 +336,7 @@ function expression1() {
             ctx.stroke();
         }
         else {
-            ctx.font = "bold 16px Arial";
+            ctx.font = "bold 16px Helvetica";
             const text = state === q16 ? "16" :
                 state === q15 ? "15" :
                     state === q14 ? "14" :
@@ -366,7 +369,7 @@ function expression2() {
     // Define the states of the FA
     const q0 = { x: 30, y: 100, starting: true };
     const q1 = { x: 187.5, y: 100 };
-    const q2 = { x: 187.5, y: 160 };
+    const q2 = { x: 187.5, y: 220 };
     const q3 = { x: 345, y: 100 };
     const q4 = { x: 345, y: 220 };
     const q5 = { x: 502.5, y: 100 };
@@ -408,8 +411,8 @@ function expression2() {
         // draw the line
         ctx.beginPath();
         ctx.moveTo(from.x + radius * cos, from.y + radius * sin);
-        
-        ctx.font = "bold 16px Arial";
+
+        ctx.font = "bold 16px Helvetica";
         if (from === to) {
             const loopRadius = 11;
             const labelHeight = 2;
@@ -428,11 +431,6 @@ function expression2() {
                 // label the transition
                 ctx.save();
                 ctx.translate(midX, midY);
-                // Text shadow
-                ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-                ctx.shadowBlur = 4;
-                ctx.shadowOffsetX = 2;
-                ctx.shadowOffsetY = 2;
                 // Text color
                 ctx.fillStyle = "#c06464";
                 ctx.fillText(symbol, labelX, labelY);
@@ -447,12 +445,6 @@ function expression2() {
                 // label the transition
                 ctx.save();
                 ctx.translate(midX, midY);
-                // Text shadow
-                ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-                ctx.shadowBlur = 4;
-                ctx.shadowOffsetX = 2;
-                ctx.shadowOffsetY = 2;
-
                 // Text color
                 ctx.fillStyle = "#c06464";
                 ctx.fillText(symbol, labelX, labelY);
@@ -505,15 +497,25 @@ function expression2() {
             ctx.translate(midX, midY);
             const labelWidth = ctx.measureText(symbol).width;
             const labelHeight = 2;
-            const labelX = -labelWidth / 2;
-            const labelY = labelHeight / 2;
+            let labelX = -labelWidth / 2;
+            let labelY = labelHeight / 2;
 
-            // Text shadow
-            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-            ctx.shadowBlur = 4;
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 2;
+            const labelOffset = 10; //label offset
+            const labelOffsetY = 5;
+            if ((from === q3 && to === q4) ||
+                (from === q1 && to === q2) ||
+                (from === q7 && to === q8) ||
+                (from === q6 && to === q8)) {
+                labelX += labelOffset; // Move the label to the right
+            }
 
+            else if ((from === q2 && to === q3) ||
+                (from === q5 && to === q6)) {
+                labelX -= labelOffset; // Move the label to the left
+            }
+            else {
+                labelY -= labelOffsetY;
+            }
             // Text color
             ctx.fillStyle = "#c06464";
             ctx.fillText(symbol, labelX, labelY);
@@ -544,7 +546,7 @@ function expression2() {
             ctx.stroke();
         }
         else {
-            ctx.font = "bold 16px Arial";
+            ctx.font = "bold 16px Helvetica";
             const text = state === q8 ? "8" :
                 state === q7 ? "7" :
                     state === q6 ? "6" :
@@ -572,33 +574,33 @@ function adjust() {
 function updateLineNumbers() {
     var codeInput = document.getElementById('input');
     var lineNumbers = document.querySelector('.linenum');
-    
+
     var lines = codeInput.value.split('\n');
     var lineNumbersHTML = '';
-    
+
     for (var i = 0; i < lines.length; i++) {
-      lineNumbersHTML += i + 1 + '\n';
+        lineNumbersHTML += i + 1 + '\n';
     }
-    
+
     lineNumbers.textContent = lineNumbersHTML;
-  }
-  
-  // Add event listener to the code input
-  var codeInput = document.getElementById('input');
-  codeInput.addEventListener('input', updateLineNumbers);
-  
-  // Initial update of line numbers
-  updateLineNumbers();  
+}
+
+// Add event listener to the code input
+var codeInput = document.getElementById('input');
+codeInput.addEventListener('input', updateLineNumbers);
+
+// Initial update of line numbers
+updateLineNumbers();
 
 // Button generator
 function generateButtons(lines) {
     for (let i = 0; i < lines.length; i++) {
-      const button = document.createElement('button');
-      button.textContent = 'Simulate String #' + (i + 1);
-      button.classList.add('simbtn');
-      button.addEventListener('click', () => simulateString(lines[i]));
-  
-      buttonContainer.appendChild(button);
+        const button = document.createElement('button');
+        button.textContent = 'Simulate String #' + (i + 1);
+        button.classList.add('simbtn');
+        button.addEventListener('click', () => simulateString(lines[i]));
+
+        buttonContainer.appendChild(button);
     }
 }
 
@@ -615,42 +617,33 @@ function eval() {
     // Textarea getting
     let userInput = document.getElementById("input");
     let lines = userInput.value.split("\n");
-    const expression1 = '(bab+bbb)(a*b*)(a*+b*)(ba)*(aba)(bab+aba)*bb(a+b)*(bab+aba)(a+b)*';
-    const expression2 = '(1+0)*1*0*(101+01+000)(1+0)*(101+00)*(111+00+101)(1+0)*';
+    lines = lines.map(line => line.replace(/\s/g, "")); // Remove spaces from each line
     var results = [];
-    
-    // Remove spaces from each line
-    lines = lines.map(line => line.replace(/\s/g, ""));
-
-    switch (expression) {
-        case "expression1":
-            // validate input
-            for (let i = 0; i < lines.length; i++) {
-                if (!/^[ab]*$/.test(lines[i])) {
-                    alert("Expression 1 can only contain 'a' or 'b'");
-                    return;
-                }
-                // validation code here
+    if (expression == "expression1") {
+        // validate input
+        for (let i = 0; i < lines.length; i++) {
+            if (!/^[ab]*$/.test(lines[i]) || lines == null || lines == "") {
+                alert("Invalid/Empty Input");
+                return;
+            } 
+        }
+    }
+    else if (expression == "expression2") {
+        // validate input
+        for (let i = 0; i < lines.length; i++) {
+            if (!/^[01]*$/.test(lines[i]) || lines == null || lines == "") {
+                alert("Invalid/Empty Input");
+                return;
             }
-            break;
-        case "expression2":
-            // validate input
-            for (let i = 0; i < lines.length; i++) {
-                if (!/^[01]*$/.test(lines[i])) {
-                    alert("Expression 2 can only contain '0' or '1'");
-                    return;
-                }
-                // validation code here
-            }
-            break;
-        default:
-            alert("Please enter expressions to be evaluated.");
+            // validation code here
+        }
+    } else {
+        alert("Please Select An Expression");
     }
     buttonContainer.innerHTML = '';
     generateButtons(lines);
-    generateResults(results, resultDiv);
+    generateResult(results, resultDiv);
 }
-
 // Simulate code
 function simulateString(line) {
     // enter code here
