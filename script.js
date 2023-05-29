@@ -199,7 +199,7 @@ function expression1() {
                     ctx.save();
                     ctx.translate(midX, midY);
                     // Text color
-                    ctx.fillStyle = "#c06464";
+                    ctx.fillStyle = "#b34949";
                     ctx.fillText(symbol, labelX, labelY);
                     ctx.restore();
                 } else {
@@ -214,7 +214,7 @@ function expression1() {
                     ctx.save();
                     ctx.translate(midX, midY);
                     // Text color
-                    ctx.fillStyle = "#c06464";
+                    ctx.fillStyle = "#b34949";
                     ctx.fillText(symbol, labelX, labelY);
                     ctx.restore();
                 }
@@ -229,7 +229,7 @@ function expression1() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#c06464";
+                ctx.fillStyle = "#b34949";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             }
@@ -307,7 +307,7 @@ function expression1() {
                 labelY -= labelOffsetY;
             }
             // Text color
-            ctx.fillStyle = "#c06464";
+            ctx.fillStyle = "#b34949";
             ctx.fillText(symbol, labelX, labelY);
             ctx.restore();
         }
@@ -432,7 +432,7 @@ function expression2() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#c06464";
+                ctx.fillStyle = "#b34949";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             } else { //if the state is below
@@ -446,7 +446,7 @@ function expression2() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#c06464";
+                ctx.fillStyle = "#b34949";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             }
@@ -517,7 +517,7 @@ function expression2() {
                 labelY -= labelOffsetY;
             }
             // Text color
-            ctx.fillStyle = "#c06464";
+            ctx.fillStyle = "#b34949";
             ctx.fillText(symbol, labelX, labelY);
             ctx.restore();
         }
