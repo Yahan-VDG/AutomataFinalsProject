@@ -5,7 +5,7 @@ To Do List:
 - [x] Expressions FA - bert
 - [x] CFG - Vea
 - [x] PDA - Em
-- [ ] New color palette - Vea
+- [x] New color palette - Vea
 - [ ] Input logic code
 - [ ] Simulation animations
 
