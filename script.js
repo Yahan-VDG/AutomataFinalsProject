@@ -624,9 +624,15 @@ function eval() {
         for (let i = 0; i < lines.length; i++) {
             if (!/^[ab]*$/.test(lines[i]) || lines == null || lines == "") {
                 alert("Invalid/Empty Input");
+                
                 return;
-            } 
+            }else{
+                const dfa_regex = /^(bab|bbb)(a*b*)(a*|b*)(ba)*(aba)(bab|aba)*bb(a|b)*(bab|aba)(a|b)*$/;
+                var isValid = dfa_regex.test(lines);
+                console.log(isValid);
+            }
         }
+        
     }
     else if (expression == "expression2") {
         // validate input
@@ -634,8 +640,11 @@ function eval() {
             if (!/^[01]*$/.test(lines[i]) || lines == null || lines == "") {
                 alert("Invalid/Empty Input");
                 return;
+            } else {
+                const dfa_regex = /^(1|0)*1*0*(101|01|000)(1|0)*(101|00)*(111|00|101)(1|0)*$/;
+                var isValid = dfa_regex.test(lines);
+                console.log(isValid);
             }
-            // validation code here
         }
     } else {
         alert("Please Select An Expression");
