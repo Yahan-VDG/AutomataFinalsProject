@@ -1,87 +1,96 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Automata Finals</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/icon_Ej6_icon.ico" type="images/icon">
 </head>
+
 <body>
     <div id="header">
         <img src="images/icon.png" alt="Pudding Icon" id="icon">
         <h1>Automata Finals Project</h1>
     </div>
-    
+
 
     <!--Expression Selection-->
-    <div class="box">  
-    <p class="bodytxt">Select Expression</p>
-    <div class="dropdown">
-        <button onclick="selectExpression()" class="btn" id="firstrw">Select Expression</button>
-        <div id="expressions" class="expressions">
-            <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb (a + b)* (bab + aba) (a + b)*</a>
-            <a onclick="expression2()"><b>Expression 2:</b>(1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
+    <div class="box">
+        <p class="bodytxt">Select Expression</p>
+        <div class="dropdown">
+            <button onclick="selectExpression()" class="btn" id="firstrw">Select Expression</button>
+            <div id="expressions" class="expressions">
+                <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb
+                    (a + b)* (bab + aba) (a + b)*</a>
+                <a onclick="expression2()"><b>Expression 2:</b>(1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111
+                    + 00 + 101) (1 + 0)*</a>
+            </div>
         </div>
-    </div>
 
-    <!--Expression Canvas-->
-    <p class="bodytxt">Output</p>
-    <canvas id="expressionCanvas" width="710" height="325"></canvas>
-
-    <!--CFG and PDA-->
-    <div id="secondrw">
-    <button class="btn" id="cfgbutton">CFG</button>
-    <div id="cfgoverlay">
-        <p id="cfg1">
-            S → CDGJabaKbbLML <br><br>
-            C → bab | bbb <br>
-            D → aE | bF | Λ <br>
-            E → aE | aF | Λ <br>
-            F → bF | Λ <br>
-            G → aH | bI | Λ <br>
-            H → aH | Λ <br>
-            I → bI | Λ <br>
-            J → baJ | Λ <br>
-            K → babK | abaK | Λ <br>
-            L → aL | bL | Λ <br>
-            M → bab | aba
-        </p>
-        <p id="cfg2">
-            S → XYZWXVUX <br><br>
-            X → 1X | 0X | Λ <br>
-            Y → 1Y | Λ <br>
-            Z → 0Y | Λ <br>
-            W → 101 | 1 | 000 <br>
-            V → 101V | 00V | Λ <br>
-            U → 111 | 00 | 101
-        </p>
-        <p id="noexpCFG">Please select an expression to display its CFG.</p>
-    </div>
-
-    <button class="btn" id="pdabutton">PDA</button>
-    <div id="pdaoverlay">
-        <img src="images/expression1pda.png" id="pda1">
-        <img src="images/expression2pda.png" id="pda2">
-        <p id="noexpPDA">Please select an expression to display its PDA.</p>
-    </div>
-    </div>
-    
-    <!--Input Box-->
-    <p class="bodytxt">Enter String(s) to be Evaluated:</p>
-    <div class="inputlines">
-        <div class="linenum"></div>
-        <div class="textarea-container">
-            <textarea id="input" cols="99" wrap="hard" oninput="adjust()"></textarea>
+        <!--Expression Canvas-->
+        <p class="bodytxt">Output</p>
+        <div class="canvas-container">
+            <canvas id="expressionCanvas" width="710" height="325"></canvas>
+            <canvas id="canvasAnimation" width="710" height="325"></canvas>
         </div>
-        <div id="simbtn"></div>
-    </div>
-    <button class="btn" id="eval" onclick="eval()">Evaluate</button>
+
+        <!--CFG and PDA-->
+        <div id="secondrw">
+            <button class="btn" id="cfgbutton">CFG</button>
+            <div id="cfgoverlay">
+                <p id="cfg1">
+                    S → CDGJabaKbbLML <br><br>
+                    C → bab | bbb <br>
+                    D → aE | bF | Λ <br>
+                    E → aE | aF | Λ <br>
+                    F → bF | Λ <br>
+                    G → aH | bI | Λ <br>
+                    H → aH | Λ <br>
+                    I → bI | Λ <br>
+                    J → baJ | Λ <br>
+                    K → babK | abaK | Λ <br>
+                    L → aL | bL | Λ <br>
+                    M → bab | aba
+                </p>
+                <p id="cfg2">
+                    S → XYZWXVUX <br><br>
+                    X → 1X | 0X | Λ <br>
+                    Y → 1Y | Λ <br>
+                    Z → 0Y | Λ <br>
+                    W → 101 | 1 | 000 <br>
+                    V → 101V | 00V | Λ <br>
+                    U → 111 | 00 | 101
+                </p>
+                <p id="noexpCFG">Please select an expression to display its CFG.</p>
+            </div>
+
+            <button class="btn" id="pdabutton">PDA</button>
+            <div id="pdaoverlay">
+                <img src="images/expression1pda.png" id="pda1">
+                <img src="images/expression2pda.png" id="pda2">
+                <p id="noexpPDA">Please select an expression to display its PDA.</p>
+            </div>
+        </div>
+
+        <!--Input Box-->
+        <p class="bodytxt">Enter String(s) to be Evaluated:</p>
+        <div class="inputlines">
+            <div class="linenum"></div>
+            <div class="textarea-container">
+                <textarea id="input" cols="99" wrap="hard" oninput="adjust()"></textarea>
+            </div>
+            <div id="simbtn"></div>
+        </div>
+        <button class="btn" id="eval" onclick="eval()">Evaluate</button>
     </div>
 
     <div id="credits">
-        <p>Made by BCS31 Group 4 <br><br>Estelle Marie Dasal<br>Vea Annamika De Guzman<br>Eisley Kirk Maglabe<br>Renbert Rosas <br><br><a href="https://github.com/Yahan-VDG/AutomataFinalsProject" target="_blank">Click to See Our GitHub Repository!</a></p>
+        <p>Made by BCS31 Group 4 <br><br>Estelle Marie Dasal<br>Vea Annamika De Guzman<br>Eisley Kirk Maglabe<br>Renbert
+            Rosas</p>
     </div>
     <script src="drawExpressions.js"></script>
     <script src="animation.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
