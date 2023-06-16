@@ -253,13 +253,26 @@ p {
 
 /* Input Textarea */
 #input {
-  width: 560px;
+  width: 480px;
   height: 150px;
   margin-left: auto;
   margin-right: auto;
   font-family: Helvetica;
   font-size: 14px;
   line-height: 1.5;
+}
+
+/* Result */
+#result p {
+  color: #ffd699;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-left: 4px;
+  margin-bottom: 5.25px;
+  text-decoration-line: overline;
+  text-decoration-style: wavy;
+  text-decoration-color: #b34949;
+  text-align: center;
 }
 
 /* Simulate Buttons*/

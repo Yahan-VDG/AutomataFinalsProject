@@ -135,16 +135,24 @@ updateLineNumbers();
 
 // Button generator
 function generateButtons(lines) {
-    const linesString = JSON.stringify(lines);
-    const lineSliced = linesString.substring(2, linesString.length - 2);
-    console.log(lineSliced);
     for (let i = 0; i < lines.length; i++) {
         const button = document.createElement('button');
         button.textContent = 'Simulate String #' + (i + 1);
         button.classList.add('simbtn');
-        button.addEventListener('click', () => animate(lineSliced));
-        
+        button.addEventListener('click', () => animate(lines[i]));
         buttonContainer.appendChild(button);
+    }
+}
+
+function generateResults(results) {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    for (let i = 0; i < results.length; i++) {
+        const lineResult = document.createElement('p');
+        let textContent = document.createTextNode(results[i]);
+        lineResult.appendChild(textContent);
+        resultDiv.appendChild(lineResult);
     }
 }
 
@@ -153,21 +161,24 @@ function eval() {
     let userInput = document.getElementById("input");
     let lines = userInput.value.split("\n");
     lines = lines.map(line => line.replace(/\s/g, "")); // Remove spaces from each line
+    
+    let result = [];
+
     if (expression == "expression1") {
         // validate input
         for (let i = 0; i < lines.length; i++) {
             if (!/^[ab]*$/.test(lines[i]) || lines == null || lines == "") {
-                alert("Invalid/Empty Input");
+                result[i] = "Invalid";
                 return;
             } else {
                 const dfa_regex = /^(bab|bbb)(a*b*)(a*|b*)(ba)*(aba)(bab|aba)*bb(a|b)*(bab|aba)(a|b)*$/;
                 var isValid = dfa_regex.test(lines[i]);
                 console.log(isValid);
                 if (isValid == true) {
-                    alert("The String is Valid");
+                    result[i] = "Valid";
                 }
                 else {
-                    alert("The String is Invalid");
+                    result[i] = "Invalid";
                 }
             }
         }
@@ -176,17 +187,16 @@ function eval() {
         // validate input
         for (let i = 0; i < lines.length; i++) {
             if (!/^[01]*$/.test(lines[i]) || lines == null || lines == "") {
-                alert("Invalid/Empty Input");
+                result[i] = "Invalid";
                 return;
             } else {
                 const dfa_regex = /^(1|0)*1*0*(101|01|000)(1|0)*(101|00)*(111|00|101)(1|0)*$/;
                 var isValid = dfa_regex.test(lines[i]);
-                console.log(isValid);
                 if (isValid == true) {
-                    alert("The String is Valid");
+                    result[i] = "Valid";
                 }
                 else {
-                    alert("The String is Invalid");
+                    result[i] = "Invalid";
                 }
             }
         }
@@ -194,5 +204,6 @@ function eval() {
         alert("Please Select An Expression");
     }
     buttonContainer.innerHTML = '';
+    generateResults(result);
     generateButtons(lines);
 }
