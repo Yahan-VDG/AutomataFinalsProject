@@ -10,7 +10,6 @@ To Do List:
 - [ ] Simulation animations
 
 Current animation bugs:
-- Does not animate states one by one
 - Can only detect invalid symbol if the string ends in it
 - Animation for dfa2 has not been implemented yet
 - Further changes to match miss' example
