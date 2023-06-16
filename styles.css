@@ -199,12 +199,29 @@ p {
 }
 
 /* Canvas */
+.canvas-container {
+  position: relative;
+  display: flex;
+}
+
 #expressionCanvas {
-  background:  rgb(243, 243, 243);
+  background: rgb(243, 243, 243);
+  position: relative;
   display: block;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   border-radius: 5px;
+  z-index: 0;
+}
+
+#canvasAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  border-radius: 5px;
+  z-index: 1;
 }
 
 /* Input */
