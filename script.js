@@ -16,6 +16,7 @@ const textarea = document.getElementById("input");
 const buttonContainer = document.getElementById('simbtn');
 const resultDiv = document.getElementById("result");
 
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function selectExpression() {
