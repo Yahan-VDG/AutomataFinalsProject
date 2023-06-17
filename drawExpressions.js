@@ -47,9 +47,13 @@ function expression1() {
         { from: q12, to: q13, symbol: 'a' },
         { from: q12, to: q15, symbol: 'b' },
         { from: q15, to: q16, symbol: 'a' },
+        { from: q15, to: q15, symbol: 'b' },
+        { from: q16, to: q12, symbol: 'a' },
         { from: q16, to: q17, symbol: 'b' },
+        { from: q13, to: q13, symbol: 'a' },
         { from: q13, to: q14, symbol: 'b' },
         { from: q17, to: q17, symbol: 'a,b' },
+        { from: q14, to: q12, symbol: 'b' },
         { from: q14, to: q17, symbol: 'a' }
     ];
 
@@ -79,7 +83,7 @@ function expression1() {
             const labelWidth = ctx.measureText(symbol).width;
             let loopX, loopY, labelX, labelY, loopEndAngle, loopStartAngle;
             let counterAngle = false;
-            if (from.y == 163) { //if the state is above
+            if (from.y == 163 || from.y == 83) { //if the state is above
                 if (from.accepting) {
                     loopX = from.x - (loopRadius - 37);
                     loopY = from.y;
@@ -180,6 +184,7 @@ function expression1() {
 
             const labelOffset = 10; //label offset
             const labelOffsetY = 5;
+            
             if ((from === q3 && to === q5) ||
                 (from === q12 && to === q15) ||
                 (from === q12 && to === q13) ||
