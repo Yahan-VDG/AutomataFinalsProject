@@ -2,23 +2,9 @@ const canvas2 = document.getElementById("canvasAnimation");
 const ctx2 = canvas2.getContext("2d");
 const transitionTimer = 1000;
 
-// function getCursorPosition(canvas, event) {
-//     const rect = canvas.getBoundingClientRect()
-//     const x = event.clientX - rect.left
-//     const y = event.clientY - rect.top
-//     console.log("x: " + x + " y: " + y)
-// }
-
-// canvas2.addEventListener('mousedown', function(e) {
-//     getCursorPosition(canvas2, e)
-// });
-
 function animate(lines) {
     let currentFrame = 0;
     let stopAnimation = false;
-    /*for (let i = 0; i < lines.length; i++) {
-    lines += lines[i];
-    }*/
     const totalFrames = lines.length;
     const dfa_1 = {
         state: "q0",
@@ -75,7 +61,6 @@ function animate(lines) {
     }
 
     function animateState(stateIndex) {
-        //filltext
         setTimeout(() => {
             const currentSymbol = lines[stateIndex];
             const nextSymbol = lines[stateIndex + 1];
@@ -105,7 +90,7 @@ function animate(lines) {
         if (currentSymbol === 'a') {
             const nextState = currentState.a;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q17' && currentState.b != 'q17')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
@@ -117,7 +102,7 @@ function animate(lines) {
         if (currentSymbol === 'b') {
             const nextState = currentState.b;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q17' && currentState.b != 'q17')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
@@ -140,9 +125,11 @@ function animate(lines) {
                 currentSymbol = 'Λ';
                 if (currentState.a != 'invalid') {
                     invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    invalidHighlight(-10, -10, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
                 }
                 if (currentState.b != 'invalid') {
-                    invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                    invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    invalidHighlight(-10, -10, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
                 }
             }
         }
@@ -156,7 +143,7 @@ function animate(lines) {
         if (currentSymbol === '1') {
             const nextState = currentState.a;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q8' && currentState.b != 'q8')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
@@ -169,7 +156,7 @@ function animate(lines) {
         if (currentSymbol === '0') {
             const nextState = currentState.b;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q8' && currentState.b != 'q8')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
@@ -191,10 +178,12 @@ function animate(lines) {
                 const { location: locationB } = transitionB;
                 currentSymbol = 'Λ';
                 if (currentState.a != 'invalid') {
-                    invalidHighlight(locationA.x, locationA.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                    invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    invalidHighlight(-10, -10, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
                 }
                 if (currentState.b != 'invalid') {
-                    invalidHighlight(locationB.x, locationB.y);
+                    invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    invalidHighlight(-10, -10, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
                 }
             }
         }
@@ -202,22 +191,6 @@ function animate(lines) {
         console.log(currentSymbol);
         currentFrame++;
     }
-
-    // Every highlight is red if the string is false //still working on it
-    /*function testValidity(currentSymbol, currentState, isValid) {
-        if (currentSymbol == 'a' && isValid == true) {
-            const nextState = currentState.a;
-            validHighlight(currentState.location.x, currentState.location.y);
-            dfa_1.changeState(nextState);
-        } else if (isValid == false) {
-            const nextState = currentState.b;
-            invalidHighlight(currentState.location.x, currentState.location.y);
-            dfa_1.changeState(nextState);
-        }
-        console.log(currentState);
-        console.log(currentSymbol);
-        currentFrame++;
-    }*/
 }
 
 function validHighlight(x, y, symbol, locX, locY) {
@@ -247,13 +220,14 @@ function invalidHighlight(x, y, symbol, locX, locY) {
     ctx2.closePath();
 
     //text highlight
+    const textWidth = ctx2.measureText(symbol).width;
+    ctx2.fillStyle = "#f8f4f4";
+    ctx2.fillRect(locX, locY - 16, textWidth + 1, 17);
     ctx2.font = "bold 16px Helvetica";
     ctx2.fillStyle = "red";
     ctx2.fillText(symbol, locX, locY);
     setTimeout(() => {
-        const textWidth = ctx2.measureText(symbol).width;
-        ctx2.clearRect(locX, locY - 16, textWidth, 20);
-
+        ctx2.clearRect(locX, locY - 16, textWidth + 1, 20);
         ctx2.clearRect(x - 15, y - 15, 30, 30);
     }, 500)
 }
