@@ -1,13 +1,13 @@
 # FinalsProject
 
 To Do List:
-- [x] New GUI - Kirk/Jonathan
+- [x] New GUI - Kirk
 - [x] Expressions FA - bert
 - [x] CFG - Vea
 - [x] PDA - Em
 - [x] New color palette - Vea
-- [x] Input logic code
-- [ ] Simulation animations
+- [x] Input logic code - Em and Renbert
+- [x] Simulation animations - Em and Renbert
 
 Current animation bugs:
 - Can only detect invalid symbol if the string ends in it
