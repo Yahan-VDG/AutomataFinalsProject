@@ -48,12 +48,12 @@ function expression1() {
         { from: q12, to: q15, symbol: 'b' },
         { from: q15, to: q16, symbol: 'a' },
         { from: q15, to: q15, symbol: 'b' },
-        { from: q16, to: q12, symbol: 'a' },
+        { from: q16, to: q13, symbol: 'a' },
         { from: q16, to: q17, symbol: 'b' },
         { from: q13, to: q13, symbol: 'a' },
         { from: q13, to: q14, symbol: 'b' },
         { from: q17, to: q17, symbol: 'a,b' },
-        { from: q14, to: q12, symbol: 'b' },
+        { from: q14, to: q15, symbol: 'b' },
         { from: q14, to: q17, symbol: 'a' }
     ];
 
@@ -184,21 +184,23 @@ function expression1() {
 
             const labelOffset = 10; //label offset
             const labelOffsetY = 5;
-            
+
             if ((from === q3 && to === q5) ||
-                (from === q12 && to === q15) ||
-                (from === q12 && to === q13) ||
+                (from === q14 && to === q17) ||
                 (from === q8 && to === q11) ||
-                (from === q10 && to === q7)) {
+                (from === q10 && to === q7) ||
+                (from === q16 && to === q17) ||
+                (from === q16 && to === q13)) {
                 labelX += labelOffset; // Move the label to the right
             }
 
             else if ((from === q6 && to === q5) ||
                 (from === q5 && to === q4) ||
-                (from === q16 && to === q17) ||
-                (from === q14 && to === q17) ||
+                (from === q12 && to === q13) ||
                 (from === q11 && to === q7) ||
-                (from === q7 && to === q9)) {
+                (from === q7 && to === q9) ||
+                (from === q14 && to === q15) ||
+                (from === q12 && to === q15)) {
                 labelX -= labelOffset; // Move the label to the left
             }
             else {
@@ -289,6 +291,7 @@ function expression2() {
         { from: q7, to: q8, symbol: '1' },
         { from: q7, to: q6, symbol: '0' },
         { from: q4, to: q8, symbol: '0' },
+        { from: q4, to: q5, symbol: '1' },
         { from: q8, to: q8, symbol: '1,0' },
     ]
 
