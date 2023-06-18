@@ -63,9 +63,10 @@ function animate(lines) {
     function animateState(stateIndex) {
         setTimeout(() => {
             const currentSymbol = lines[stateIndex];
+            const prevSymbol = lines[stateIndex - 1];
             const nextSymbol = lines[stateIndex + 1];
             const currentState = dfa_1.transitions[dfa_1.state];
-            testValidity(currentSymbol, currentState, nextSymbol);
+            testValidity(currentSymbol, currentState, nextSymbol, prevSymbol);
 
             if (stateIndex < totalFrames && !stopAnimation) {
                 animateState(stateIndex + 1); // Call the next state transition
@@ -86,11 +87,15 @@ function animate(lines) {
         }, transitionTimer);
     }
 
-    function testValidity(currentSymbol, currentState, nextSymbol) {
+    function testValidity(currentSymbol, currentState, nextSymbol, prevSymbol) {
         if (currentSymbol === 'a') {
             const nextState = currentState.a;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                if(!currentState.textLocA){
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                } else {
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                }
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q17' && currentState.b != 'q17')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
@@ -102,7 +107,11 @@ function animate(lines) {
         if (currentSymbol === 'b') {
             const nextState = currentState.b;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                if(!currentState.textLocA){
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                } else {
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                }
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q17' && currentState.b != 'q17')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
@@ -112,6 +121,7 @@ function animate(lines) {
             }
         }
         if (typeof currentSymbol === 'undefined') {
+            console.log(prevSymbol);
 
             const transitionA = dfa_1.transitions[currentState.a];
             const transitionB = dfa_1.transitions[currentState.b];
@@ -123,13 +133,25 @@ function animate(lines) {
                 const { location: locationA } = transitionA;
                 const { location: locationB } = transitionB;
                 currentSymbol = 'Λ';
-                if (currentState.a != 'invalid') {
-                    invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
-                    invalidHighlight(-10, -10, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                if (prevSymbol === 'a') {
+                    if(!transitionA.textLocA){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                    } else if(!transitionA.textLocB){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    } else if(transitionA.textLocA && transitionA.textLocB){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    }
                 }
-                if (currentState.b != 'invalid') {
-                    invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
-                    invalidHighlight(-10, -10, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                if (prevSymbol === 'b') {
+                    if(!transitionB.textLocA){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                    } else if(!transitionB.textLocB){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    } else if (transitionB.textLocA && transitionB.textLocB){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    }
                 }
             }
         }
@@ -143,7 +165,11 @@ function animate(lines) {
         if (currentSymbol === '1') {
             const nextState = currentState.a;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                if(!currentState.textLocA){
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                } else {
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                }
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q8' && currentState.b != 'q8')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
@@ -156,7 +182,11 @@ function animate(lines) {
         if (currentSymbol === '0') {
             const nextState = currentState.b;
             if (nextState === 'invalid') {
-                invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                if(!currentState.textLocA){
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
+                } else {
+                    invalidHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocA.x, currentState.textLocA.y);
+                }
                 stopAnimation = true;
             } else if (typeof nextSymbol === 'undefined' && (currentState.a != 'q8' && currentState.b != 'q8')) {
                 validHighlight(currentState.location.x, currentState.location.y, currentSymbol, currentState.textLocB.x, currentState.textLocB.y);
@@ -178,12 +208,24 @@ function animate(lines) {
                 const { location: locationB } = transitionB;
                 currentSymbol = 'Λ';
                 if (currentState.a != 'invalid') {
-                    invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
-                    invalidHighlight(-10, -10, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                    if(!transitionA.textLocA){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                    } else if(!transitionA.textLocB){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    } else if(transitionA.textLocA && transitionA.textLocB){
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocB.x, transitionA.textLocB.y);
+                        invalidHighlight(locationA.x, locationA.y, currentSymbol, transitionA.textLocA.x, transitionA.textLocA.y);
+                    }
                 }
                 if (currentState.b != 'invalid') {
-                    invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
-                    invalidHighlight(-10, -10, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                    if(!transitionB.textLocA){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                    } else if(!transitionB.textLocB){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    } else if (transitionB.textLocA && transitionB.textLocB){
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocB.x, transitionB.textLocB.y);
+                        invalidHighlight(locationB.x, locationB.y, currentSymbol, transitionB.textLocA.x, transitionB.textLocA.y);
+                    }
                 }
             }
         }
