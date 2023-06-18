@@ -31,7 +31,7 @@ function expression1() {
         { from: q2, to: q3, symbol: 'b' },
         { from: q3, to: q4, symbol: 'a' },
         { from: q3, to: q5, symbol: 'b' },
-        { from: q5, to: q7, symbol: 'a' },
+        { from: q5, to: q4, symbol: 'a' },
         { from: q5, to: q5, symbol: 'b' },
         { from: q4, to: q4, symbol: 'a' },
         { from: q4, to: q6, symbol: 'b' },
@@ -96,7 +96,7 @@ function expression1() {
                     ctx.save();
                     ctx.translate(midX, midY);
                     // Text color
-                    ctx.fillStyle = "#b34949";
+                    ctx.fillStyle = "#603c2c";
                     ctx.fillText(symbol, labelX, labelY);
                     ctx.restore();
                 } else {
@@ -111,7 +111,7 @@ function expression1() {
                     ctx.save();
                     ctx.translate(midX, midY);
                     // Text color
-                    ctx.fillStyle = "#b34949";
+                    ctx.fillStyle = "#603c2c";
                     ctx.fillText(symbol, labelX, labelY);
                     ctx.restore();
                 }
@@ -126,7 +126,7 @@ function expression1() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#b34949";
+                ctx.fillStyle = "#603c2c";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             }
@@ -194,7 +194,7 @@ function expression1() {
             }
 
             else if ((from === q6 && to === q5) ||
-                (from === q5 && to === q7) ||
+                (from === q5 && to === q4) ||
                 (from === q16 && to === q17) ||
                 (from === q14 && to === q17) ||
                 (from === q11 && to === q7) ||
@@ -205,7 +205,7 @@ function expression1() {
                 labelY -= labelOffsetY;
             }
             // Text color
-            ctx.fillStyle = "#b34949";
+            ctx.fillStyle = "#603c2c";
             ctx.fillText(symbol, labelX, labelY);
             ctx.restore();
         }
@@ -330,7 +330,7 @@ function expression2() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#b34949";
+                ctx.fillStyle = "#603c2c";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             } else { //if the state is below
@@ -344,7 +344,7 @@ function expression2() {
                 ctx.save();
                 ctx.translate(midX, midY);
                 // Text color
-                ctx.fillStyle = "#b34949";
+                ctx.fillStyle = "#603c2c";
                 ctx.fillText(symbol, labelX, labelY);
                 ctx.restore();
             }
@@ -415,7 +415,7 @@ function expression2() {
                 labelY -= labelOffsetY;
             }
             // Text color
-            ctx.fillStyle = "#b34949";
+            ctx.fillStyle = "#603c2c";
             ctx.fillText(symbol, labelX, labelY);
             ctx.restore();
         }
