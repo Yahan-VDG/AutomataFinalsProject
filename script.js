@@ -12,6 +12,7 @@ const pdaoverlay = document.getElementById('pdaoverlay');
 const pda1 = document.getElementById('pda1');
 const pda2 = document.getElementById('pda2');
 const noexpPDA = document.getElementById('noexpPDA');
+const currentRegEx = document.getElementById("currentRegEx");
 const textarea = document.getElementById("input");
 const buttonContainer = document.getElementById('simbtn');
 const resultDiv = document.getElementById("result");
@@ -158,6 +159,9 @@ function generateResults(results) {
 }
 
 function eval() {
+    // clear previous animations
+    ctx2.clearRect(0, 0, canvas.width, canvas.height);
+
     // Textarea getting
     let userInput = document.getElementById("input");
     let lines = userInput.value.split("\n");

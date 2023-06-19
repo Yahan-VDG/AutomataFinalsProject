@@ -20,10 +20,8 @@
         <div class="dropdown">
             <button onclick="selectExpression()" class="btn" id="firstrw">Select Expression</button>
             <div id="expressions" class="expressions">
-                <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb
-                    (a + b)* (bab + aba) (a + b)*</a>
-                <a onclick="expression2()"><b>Expression 2:</b> (1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111
-                    + 00 + 101) (1 + 0)*</a>
+                <a onclick="expression1()"><b>Expression 1:</b> (bab + bbb) (a*b*) (a* + b*) (ba)* (aba) (bab + aba)* bb (a + b)* (bab + aba) (a + b)*</a>
+                <a onclick="expression2()"><b>Expression 2:</b> (1 + 0)* 1* 0* (101 + 01 + 000) (1 + 0)* (101 + 00)* (111 + 00 + 101) (1 + 0)*</a>
             </div>
         </div>
 
@@ -63,7 +61,6 @@
                 </p>
                 <p id="noexpCFG">Please select an expression to display its CFG.</p>
             </div>
-
             <button class="btn" id="pdabutton">PDA</button>
             <div id="pdaoverlay">
                 <img src="images/expression1pda.png" id="pda1">
@@ -71,6 +68,7 @@
                 <p id="noexpPDA">Please select an expression to display its PDA.</p>
             </div>
         </div>
+        <p id="currentRegEx">Current RegEx: <span id="regexText">Please select an expression from the Selection Expression button.</span></p>
 
         <!--Input Box-->
         <p class="bodytxt">Enter String(s) to be Evaluated:</p>

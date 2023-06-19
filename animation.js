@@ -246,12 +246,6 @@ function validHighlight(x, y, symbol, locX, locY) {
     ctx2.font = "bold 16px Helvetica";
     ctx2.fillStyle = "lime";
     ctx2.fillText(symbol, locX, locY);
-    setTimeout(() => {
-        const textWidth = ctx2.measureText(symbol).width;
-        ctx2.clearRect(locX, locY - 16, textWidth, 20);
-
-        ctx2.clearRect(x - 15, y - 15, 30, 30);
-    }, 500)
 }
 
 function invalidHighlight(x, y, symbol, locX, locY) {
@@ -268,8 +262,4 @@ function invalidHighlight(x, y, symbol, locX, locY) {
     ctx2.font = "bold 16px Helvetica";
     ctx2.fillStyle = "red";
     ctx2.fillText(symbol, locX, locY);
-    setTimeout(() => {
-        ctx2.clearRect(locX, locY - 16, textWidth + 1, 20);
-        ctx2.clearRect(x - 15, y - 15, 30, 30);
-    }, 500)
 }

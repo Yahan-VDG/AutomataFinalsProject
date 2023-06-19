@@ -1,3 +1,9 @@
+/* Font */
+@font-face {
+  font-family: "Helvetica";
+  src: url("Helvetica.ttf") format("truetype");
+}
+
 /* Header */
 #header {
   display: flex;
@@ -93,11 +99,24 @@ p {
   width: 90%;
 }
 
-/* First Row of Buttons */
+/* Second Row of Buttons */
 #secondrw {
   margin-top: 10px;
   display: flex;
   justify-content: center;
+}
+
+/* Current RegEx */
+#currentRegEx {
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%; 
+}
+
+#regexText {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: #b34949;
 }
 
 /* Button Effects */
