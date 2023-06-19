@@ -174,8 +174,9 @@ function eval() {
         for (let i = 0; i < lines.length; i++) {
             if (!/^[ab]*$/.test(lines[i]) || lines == null || lines == "") {
                 result[i] = "Invalid";
-                return;
-            } else {
+                alert("You have entered invalid symbols for this RegEx in String #" + (i + 1) + ".");
+            }
+            if (/^[ab]*$/.test(lines[i])) {
                 const dfa_regex = /^(bab|bbb)(a*b*)(a*|b*)(ba)*(aba)(bab|aba)*bb(a|b)*(bab|aba)(a|b)*$/;
                 var isValid = dfa_regex.test(lines[i]);
                 console.log(isValid);
@@ -193,8 +194,9 @@ function eval() {
         for (let i = 0; i < lines.length; i++) {
             if (!/^[01]*$/.test(lines[i]) || lines == null || lines == "") {
                 result[i] = "Invalid";
-                return;
-            } else {
+                alert("You have entered invalid symbols for this RegEx in String #" + (i + 1) + ".");
+            } 
+            if (!/^[01]*$/.test(lines[i])) {
                 const dfa_regex = /^(1|0)*1*0*(101|01|000)(1|0)*(101|00)*(111|00|101)(1|0)*$/;
                 var isValid = dfa_regex.test(lines[i]);
                 if (isValid == true) {
