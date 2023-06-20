@@ -1,6 +1,9 @@
 function expression1() {
     expression = "expression1";
 
+    let regexText = "Current RegEx: <span id='regexText'>(bab+bbb) (a*b*) (a*+b*) (ba)* (aba) (bab+aba)* bb (a+b)* (bab+aba) (a+b)*</span>";
+    currentRegEx.innerHTML = regexText;
+
     //Clears Canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -262,6 +265,9 @@ function expression1() {
 
 function expression2() {
     expression = "expression2";
+
+    let regexText = "Current RegEx: <span id='regexText'>(1+0)* 1* 0* (101+01+000) (1+0)* (101+00)* (111+00+101) (1+0)*</span>";
+    currentRegEx.innerHTML = regexText;
 
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
