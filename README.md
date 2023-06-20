@@ -9,11 +9,6 @@ To Do List:
 - [x] Input logic code - Em and Renbert
 - [x] Simulation animations - Em and Renbert
 
-Current animation bugs:
-- Can only detect invalid symbol if the string ends in it
-- Animation for dfa2 has not been implemented yet
-- Further changes to match miss' example
-
 GitHub Pages Link: https://yahan-vdg.github.io/AutomataFinalsProject/
 
 References used:
