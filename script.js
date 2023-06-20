@@ -141,7 +141,10 @@ function generateButtons(lines) {
         const button = document.createElement('button');
         button.textContent = 'Simulate String #' + (i + 1);
         button.classList.add('simbtn');
-        button.addEventListener('click', () => animate(lines[i]));
+        button.addEventListener('click', () => {
+            ctx2.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            animate(lines[i]);
+        });
         buttonContainer.appendChild(button);
     }
 }

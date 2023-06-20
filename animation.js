@@ -234,7 +234,7 @@ function animate(lines) {
         currentFrame++;
     }
 }
-
+/*
 function validHighlight(x, y, symbol, locX, locY) {
     //
     ctx2.beginPath();
@@ -262,4 +262,55 @@ function invalidHighlight(x, y, symbol, locX, locY) {
     ctx2.font = "bold 16px Helvetica";
     ctx2.fillStyle = "red";
     ctx2.fillText(symbol, locX, locY);
-}
+}*/
+
+// Define an array to keep track of highlighted states
+let highlightedStates = [];
+
+function validHighlight(x, y, symbol, locX, locY) {
+    const stateIndex = highlightedStates.findIndex(state => state.x === x && state.y === y);
+  
+    if (stateIndex !== -1) {
+      const state = highlightedStates[stateIndex];
+      ctx2.clearRect(state.x - 15, state.y - 15, 30, 30);
+      highlightedStates.splice(stateIndex, 1);
+    }
+  
+    ctx2.beginPath();
+    ctx2.arc(x, y, 15, 0, Math.PI * 2);
+    ctx2.fillStyle = "rgba(0, 255, 0, 0.5)";
+    ctx2.fill();
+    ctx2.closePath();
+  
+    ctx2.font = "bold 16px Helvetica";
+    ctx2.fillStyle = "lime";
+    ctx2.fillText(symbol, locX, locY);
+  
+    highlightedStates.push({ x, y });
+  }
+  
+  function invalidHighlight(x, y, symbol, locX, locY) {
+    const stateIndex = highlightedStates.findIndex(state => state.x === x && state.y === y);
+  
+    if (stateIndex !== -1) {
+      const state = highlightedStates[stateIndex];
+      ctx2.clearRect(state.x - 15, state.y - 15, 30, 30);
+      highlightedStates.splice(stateIndex, 1);
+    }
+  
+    ctx2.beginPath();
+    ctx2.arc(x, y, 15, 0, Math.PI * 2);
+    ctx2.fillStyle = "rgba(255, 0, 0, 0.5)";
+    ctx2.fill();
+    ctx2.closePath();
+  
+    const textWidth = ctx2.measureText(symbol).width;
+    ctx2.fillStyle = "#f8f4f4";
+    ctx2.fillRect(locX, locY - 16, textWidth + 1, 17);
+    ctx2.font = "bold 16px Helvetica";
+    ctx2.fillStyle = "red";
+    ctx2.fillText(symbol, locX, locY);
+  
+    highlightedStates.push({ x, y });
+  }
+  
